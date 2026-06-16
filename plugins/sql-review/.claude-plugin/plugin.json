@@ -1,0 +1,11 @@
+{
+  "name": "sql-review",
+  "description": "Reviews SQL against the team's warehouse conventions, with prod guardrails and an audit trail attached.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Andrew Madson"
+  },
+  "homepage": "https://github.com/andymadson/madson-tools",
+  "license": "MIT",
+  "keywords": ["sql", "data-engineering", "governance", "code-review"]
+}
