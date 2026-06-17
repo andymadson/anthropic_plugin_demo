@@ -1,10 +1,10 @@
-# madson-tools: a Claude Code plugin marketplace
+# anthropic_plugin_demo: a Claude Code plugin marketplace
 
-[![plugin-tests](https://github.com/andymadson/madson-tools/actions/workflows/test.yml/badge.svg)](https://github.com/andymadson/madson-tools/actions/workflows/test.yml)
+[![plugin-tests](https://github.com/andymadson/anthropic_plugin_demo/actions/workflows/test.yml/badge.svg)](https://github.com/andymadson/anthropic_plugin_demo/actions/workflows/test.yml)
 
 Your best engineer built great Claude Code workflows. They live on her laptop. The other 200 engineers have 200 slightly different setups, and the platform team has no way to ship a fix to all of them. That is the problem plugins solve, and this repo demos it end to end.
 
-This repository plays the role of a team's internal plugin marketplace (`madson-tools`). It contains one plugin, `sql-review`, that bundles four things a data platform team actually standardizes:
+This repository plays the role of a team's internal plugin marketplace (`anthropic_plugin_demo`). It contains one plugin, `sql-review`, that bundles four things a data platform team actually standardizes:
 
 - A `/sql-review:sql-review` skill that reviews models against the team's written conventions
 - A read-only `sql-reviewer` agent that does the detailed pass
@@ -18,7 +18,7 @@ It also contains `demo-project/`, a runnable orders ELT pipeline (SQLite, Python
 Prerequisites: [Claude Code](https://code.claude.com/docs) installed and authenticated, Node 18+ (Claude Code already requires it), Python 3, git. Commands below are shown for macOS, Linux, and WSL. On Windows, run the demo inside WSL or Git Bash; the hook commands use shell variable substitution. SQLite needs real file locking, so on Windows clone into the WSL filesystem (`~/`), not a `/mnt/c` or OneDrive path.
 
 ```bash
-git clone https://github.com/andymadson/madson-tools && cd madson-tools
+git clone https://github.com/andymadson/anthropic_plugin_demo && cd anthropic_plugin_demo
 
 # 1. Prove the guardrails work before spending a single token (about 5 seconds)
 node tests/run_tests.js
@@ -34,7 +34,7 @@ Inside Claude Code:
 
 ```
 /plugin marketplace add ../
-/plugin install sql-review@madson-tools
+/plugin install sql-review@anthropic_plugin_demo
 ```
 
 Restart when prompted, then run your first bundled workflow:
@@ -43,7 +43,7 @@ Restart when prompted, then run your first bundled workflow:
 /sql-review:sql-review pipelines/sql/orders_daily.sql
 ```
 
-That is the whole loop: one marketplace add, one install, and this machine now has the same commands, conventions, and guardrails as everyone else's. (Installing from GitHub instead? `/plugin marketplace add andymadson/madson-tools` does the same thing for a whole org.)
+That is the whole loop: one marketplace add, one install, and this machine now has the same commands, conventions, and guardrails as everyone else's. (Installing from GitHub instead? `/plugin marketplace add andymadson/anthropic_plugin_demo` does the same thing for a whole org.)
 
 ## The 4-beat demo
 
@@ -52,12 +52,12 @@ That is the whole loop: one marketplace add, one install, and this machine now h
 1. **Install.** Marketplace add, plugin install, show the namespaced components arriving.
 2. **Use.** `/sql-review:sql-review` catches the seeded findings (`SELECT *`, NULL keys in a rollup, returns counted as revenue, no DQ check).
 3. **Govern.** Ask Claude to drop a prod table. The guard denies it deterministically, Claude course-corrects to dev, and `.claude/audit/*.jsonl` shows the denial next to every executed call.
-4. **Ship.** Add a policy rule the room suggests, bump the version to 1.0.1, `/plugin marketplace update madson-tools`, and every engineer gets the new rule. That is the rollout motion.
+4. **Ship.** Add a policy rule the room suggests, bump the version to 1.0.1, `/plugin marketplace update anthropic_plugin_demo`, and every engineer gets the new rule. That is the rollout motion.
 
 ## How it works
 
 ```
-madson-tools/
+anthropic_plugin_demo/
 ├── .claude-plugin/marketplace.json        # the catalog: name, owner, plugin list
 ├── plugins/sql-review/
 │   ├── .claude-plugin/plugin.json         # manifest: name, version 1.0.0
@@ -83,7 +83,7 @@ Policy lives in `policy.json` as plain config. It gets code review like everythi
 
 1. Edit `plugins/sql-review/scripts/policy.json` (add a deny or ask rule) or `skills/warehouse-conventions/SKILL.md` (add a convention).
 2. Prove the new rule with `node tests/try.js "<the command>"` (instant decision, zero tokens), then run `node tests/run_tests.js` to confirm nothing regressed. Add a harness case for your rule while you are there.
-3. Bump `version` in `plugin.json`, push, and have engineers run `/plugin marketplace update madson-tools` followed by a plugin update.
+3. Bump `version` in `plugin.json`, push, and have engineers run `/plugin marketplace update anthropic_plugin_demo` followed by a plugin update.
 
 For fast local iteration without the install cycle, load the plugin in place for one session:
 

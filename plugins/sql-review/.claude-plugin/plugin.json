@@ -5,7 +5,7 @@
   "author": {
     "name": "Andrew Madson"
   },
-  "homepage": "https://github.com/andymadson/madson-tools",
+  "homepage": "https://github.com/andymadson/anthropic_plugin_demo",
   "license": "MIT",
   "keywords": ["sql", "data-engineering", "governance", "code-review"]
 }

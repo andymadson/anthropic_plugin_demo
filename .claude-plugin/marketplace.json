@@ -1,5 +1,5 @@
 {
-  "name": "madson-tools",
+  "name": "anthropic_plugin_demo",
   "description": "An internal-style Claude Code plugin marketplace. One repo, one review process, every engineer gets the same tooling.",
   "owner": {
     "name": "Andrew Madson"

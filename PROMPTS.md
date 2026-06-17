@@ -7,8 +7,8 @@ Copy-paste prompts for each beat. Run them from `demo-project/` with the plugin 
 Inside `claude`, from `demo-project/`:
 
 ```
-/plugin marketplace add andymadson/madson-tools
-/plugin install sql-review@madson-tools
+/plugin marketplace add andymadson/anthropic_plugin_demo
+/plugin install sql-review@anthropic_plugin_demo
 ```
 
 (Local clone? Use `/plugin marketplace add ../` instead of the GitHub path. Run the add before the install; installing first fails with a message that blames the plugin, not the order.) Then open `/plugin` to show what arrived: two skills, one agent, two hooks. Type `/sql-review:` to show the namespaced skills.
@@ -74,7 +74,7 @@ Make a change the room suggests. Example: block `terraform apply` for agents.
 
 2. From the repo root, prove the new rule instantly, no tokens: `node tests/try.js "terraform apply"` prints the deny with the rule id. Then `node tests/run_tests.js` shows nothing regressed.
 3. Bump `version` in `plugins/sql-review/.claude-plugin/plugin.json` to `1.0.1` and push.
-4. On any engineer's machine: `/plugin marketplace update madson-tools`, then `claude plugin update sql-review` and restart. The new rule is now policy for everyone.
+4. On any engineer's machine: `/plugin marketplace update anthropic_plugin_demo`, then `claude plugin update sql-review` and restart. The new rule is now policy for everyone.
 
 One PR, one version bump, and every engineer's agent just got safer.
 
