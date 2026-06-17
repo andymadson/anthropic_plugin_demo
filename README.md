@@ -15,7 +15,7 @@ It also contains `demo-project/`, a runnable orders ELT pipeline (SQLite, Python
 
 ## First run in under 5 minutes
 
-Prerequisites: [Claude Code](https://code.claude.com/docs) installed and authenticated, Node 18+ (Claude Code already requires it), Python 3, git. Commands below are shown for macOS, Linux, and WSL. On Windows, run the demo inside WSL or Git Bash; the hook commands use shell variable substitution. SQLite needs real file locking, so on Windows clone into the WSL filesystem (`~/`), not a `/mnt/c` or OneDrive path.
+Prerequisites: [Claude Code v1.0.33+](https://code.claude.com/docs) installed and authenticated, Node 18+ (Claude Code already requires it), Python 3, git. Commands below are shown for macOS, Linux, and WSL. On Windows, run the demo inside WSL or Git Bash; the hook commands use shell variable substitution. SQLite needs real file locking, so on Windows clone into the WSL filesystem (`~/`), not a `/mnt/c` or OneDrive path.
 
 ```bash
 git clone https://github.com/andymadson/anthropic_plugin_demo && cd anthropic_plugin_demo
